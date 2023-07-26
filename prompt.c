@@ -16,7 +16,10 @@
 int main(void)
 {
 	char command[MAX_COMMAND_LEN];
+	char **arg, *cmd_buff = NULL;
 	int exitCondition = 0;
+	int status = 0;
+
 
 	while (!exitCondition)
 	{
@@ -25,30 +28,13 @@ int main(void)
 			break;
 
 		command[strcspn(command, "\n")] = '\0';
-
-		pid_t pid = fork();
-
-		if (pid < 0)
-			{
-			perror("Fork failure");
-			exit(EXIT_FAILURE);
-			}
-		else if (pid == 0)
-			{
-			int rtn = execl(command, command, (char *)NULL);
-
-				if (rtn < 0)
-				{
-					perror("Not found");
-					exit(EXIT_FAILURE);
-				}
-				exit(EXIT_SUCCESS);
-			} else
-			{
-				int status;
-
-				wait(&status);
-			}
-	}
-			return (0);
+		arg = dividestring(cmd_buff, " ");
+		arg[0] = _path(arg[0]);
+		if (arg[0] != NULL)
+                        status = _fork(arg); /* Executes fork and execve function */
+                else
+                        perror("Not found"); /* Displays error's description if not forked */
+                free(arg);
+        }
+        return (status);
 }

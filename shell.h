@@ -16,13 +16,13 @@
 /* int argument(int argc, char *argv[]);*/
 void *_calloc(size_t nmemb, size_t size);
 char *_strcat(char *dest, char *src);
-int _strcmp(const char *s1, const char *s2);
+int _strcmp(char *s1, const char *s2);
 char *_strcpy(char *dest, const char *src);
 size_t _strlen(const char *s);
 char **dividestring(char *div_string, char *separator);
 char *getenv(const char *name);
 void _environ(void);
 char *_path(char *cmd_buff);
-
+int _fork(char **arg);
 
 #endif
