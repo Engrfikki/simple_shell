@@ -16,6 +16,7 @@ int _fork(char **arg)
 	pid_t pid = fork();
 	int status = 0;
 	char *envir[] = {NULL};
+
 	if (pid < 0)
 	{
 		perror("Fork failure");
