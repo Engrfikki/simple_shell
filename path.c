@@ -4,7 +4,7 @@
 
 #define MAX_LENGTH 100
 
-char div_string[MAX_LENGTH];
+/*char div_string[MAX_LENGTH];*/
 
 /**
  * _path - A function that checks if the address of an array exists
@@ -30,15 +30,10 @@ char *_path(char *cmd_buff)
 	/*div_string = _strcpy(div_string, str);*/
 	div_string = malloc(strlen(str) + 1);
 	if (div_string != NULL)
-		{
-		strcpy(div_string, str); /* Now you can copy the source string to the dynamically allocated memory*/
-		/* Rest of your code, you can use div_string here*/
-
-		free(div_string); /* Don't forget to free the allocated memory when you're done using it*/
-		} 
-	else 
+	{	strcpy(div_string, str);
+		free(div_string); }
+	else
 	{
-		/* Memory allocation failed*/
 	perror("Memory allocation failed!");
 	}
 	main_arr = dividestring(div_string, ";");
@@ -47,16 +42,12 @@ char *_path(char *cmd_buff)
 	{
 		len = _strlen(main_arr[q]);
 		if (main_arr[q][len - 1] != '/')
-		{
-			arr_path = _strcat(main_arr[q], "/");
-		}
-		arr_path = _strcat(main_arr[q], cmd_buff);
+		{	arr_path = _strcat(main_arr[q], "/");
+			arr_path = _strcat(main_arr[q], cmd_buff); }
 
 		if (stat(arr_path, &info) == 0)
-		{
-			chk = 1;
-			break;
-		}
+		{	chk = 1;
+			break; }
 	}
 	if (chk == 0)
 		return (NULL);

@@ -6,6 +6,7 @@
 
 /**
  * _fork - a function that executes fork
+ * @arg: arguments
  *
  * Return: status
 */
