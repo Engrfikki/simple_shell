@@ -9,7 +9,7 @@
 /**
  * _path - A function that checks if the address of an array exists
  *
- * @cmd_buff: The command buffer
+ * @command: The command buffer
  * Return: The path of the command if found, and NULL if not found
 */
 
