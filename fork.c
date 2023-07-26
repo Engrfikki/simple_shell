@@ -15,7 +15,7 @@ int _fork(char **arg)
 {
 	pid_t pid = fork();
 	int status = 0;
-
+	char *envir[] = {NULL};
 	if (pid < 0)
 	{
 		perror("Fork failure");
@@ -24,7 +24,7 @@ int _fork(char **arg)
 
 	else if (pid == 0)
 	{
-		if (execvp(arg[0], arg) == -1)
+		if (execve(arg[0], arg, envir) == -1)
 		{
 			perror("Not found");
 			exit(EXIT_FAILURE);
