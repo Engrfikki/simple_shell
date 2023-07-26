@@ -15,7 +15,8 @@
 int main(void)
 {
 	char *input, **arg, *cmd_buff = NULL;
-	int exitCondition, status, p, sp = 0;
+	int exitCondition = 0;
+	int status, p, sp = 0;
 	size_t n = 0;
 	ssize_t buff = 0;
 
@@ -38,15 +39,15 @@ int main(void)
 		if (_strcmp("env", cmd_buff) == 0)
 		{       _environ();
 			continue;	}
-		while (cmd_buff[p] != '\0')
+		for (p = 0; cmd_buff[p] != '\0'; p++)
 		{
 			if (cmd_buff[p] != ' ')
 			{	sp = 0;
 				break;	}
+		}
 			if (sp == 1)
 			{	status = 0;
 				continue;	}
-				p++;	}
 		arg = dividestring(cmd_buff, " ");
 		arg[0] = _path(arg[0]);
 		if (arg[0] != NULL)
