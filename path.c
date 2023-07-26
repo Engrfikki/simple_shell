@@ -13,7 +13,8 @@
  * Return: The path of the command if found, and NULL if not found
 */
 
-char *_path(char *cmd_buff)
+char *_path(char *command)
+
 {
 	char *arr_path;
 	char *div_string;
@@ -22,9 +23,9 @@ char *_path(char *cmd_buff)
 	int q, len, chk = 0;
 	struct stat info;
 
-	if (stat(cmd_buff, &info) == 0)
+	if (stat(command, &info) == 0)
 	{
-		return (cmd_buff);
+		return (command);
 	}
 	/*div_string = malloc(strlen(str) + 1);*/
 	/*div_string = _strcpy(div_string, str);*/
@@ -43,7 +44,7 @@ char *_path(char *cmd_buff)
 		len = _strlen(main_arr[q]);
 		if (main_arr[q][len - 1] != '/')
 		{	arr_path = _strcat(main_arr[q], "/");
-			arr_path = _strcat(main_arr[q], cmd_buff); }
+			arr_path = _strcat(main_arr[q], command); }
 
 		if (stat(arr_path, &info) == 0)
 		{	chk = 1;

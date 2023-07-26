@@ -16,7 +16,7 @@
 int main(void)
 {
 	char command[MAX_COMMAND_LEN];
-	char **arg, *cmd_buff = NULL;
+	char **arg = NULL;
 	int exitCondition = 0;
 	int status = 0;
 
@@ -27,7 +27,7 @@ int main(void)
 			break;
 
 		command[strcspn(command, "\n")] = '\0';
-		arg = dividestring(cmd_buff, " ");
+		arg = dividestring(command, " ");
 		arg[0] = _path(arg[0]);
 		if (arg[0] != NULL)
 		status = _fork(arg); /* Executes fork and execve function */
