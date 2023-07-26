@@ -28,10 +28,9 @@ int main(void)
 		{	free(input);
 			free(cmd_buff);
 			break;	}
-		cmd_buff = malloc(buff);
+	cmd_buff = malloc(buff);
 		if (cmd_buff == NULL)
-		{
-			perror("Memory allocation failed");
+		{	perror("Memory allocation failed");
 			free(input);
 			exit(EXIT_FAILURE);	}
 		_strcpy(cmd_buff, input);
