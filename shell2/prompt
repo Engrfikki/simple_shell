@@ -1,0 +1,45 @@
+/*#include <stdio.h>*/
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <string.h>
+#include "shell.h"
+
+#define MAX_COMMAND_LEN 100
+
+/**
+ * main - function that prints shell prompt
+ *
+ * Return: 0
+*/
+
+int main(void)
+{
+	char command[MAX_COMMAND_LEN];
+	char *input = NULL;
+	char **arg = NULL;
+	int exitCondition = 0;
+	int status = 0;
+	size_t n = 0;
+	ssize_t buff = 0;
+
+	while (!exitCondition)
+	{
+		printf("FikkiSam$ ");
+		buff = getline(&input, &n, stdin);
+		if (buff == -1 || _strcmp("exit\n", input) == 0)
+		
+		{	free(input);
+			break; }
+
+		command[strcspn(command, "\n")] = '\0';
+		arg = dividestring(command, " ");
+		arg[0] = _path(arg[0]);
+		if (arg[0] != NULL)
+		status = _fork(arg); /* Executes fork and execve function */
+		else
+	perror("Not found");
+	free(arg);
+	}
+	return (status);
+}
