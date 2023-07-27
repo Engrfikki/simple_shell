@@ -24,5 +24,6 @@ char *getenv(const char *name);
 void _environ(void);
 char *_path(char *cmd_buff);
 int _fork(char **arg);
+char *_getline(size_t *n);
 
 #endif

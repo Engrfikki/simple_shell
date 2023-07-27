@@ -21,9 +21,9 @@ int main(void)
 	ssize_t buff = 0;
 
 	while (!exitCondition)
-	{
-		printf("FikkiSam$ ");
-		buff = getline(&input, &n, stdin);
+	{	printf("FikkiSam$ ");
+		input = _getline(&n);
+		buff = strlen(input) + 1;
 		if (buff == -1 || _strcmp("exit\n", input) == 0)
 		{	free(input);
 			free(cmd_buff);
